@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "Web Whatsapp",
+    "version": "3.0",
+    "permissions": [
+        "tabs",
+        "scripting",
+        "storage",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "https://web.whatsapp.com/"
+    ],
+    "background": {
+        "service_worker": "b.js"
+    },
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "c.js"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Whatsapp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            width: 500px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        textarea {
+            height: 150px;
+            resize: none;
+        }
+        #status {
+            margin-top: 10px;
+        }
+        #nextMessage {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Messenger</h1>
+    <div class="container">
+        <!-- Labels Row -->
+        <div class="row mb-2">
+            <div class="col">
+                <label for="sending" class="form-label">Numbers to send:</label>
+            </div>
+            <div class="col">
+                <label for="sent" class="form-label">Sent numbers:</label>
+            </div>
+        </div>
+        
+        <!-- Textareas Row -->
+        <div class="row mb-2">
+            <div class="col">
+                <textarea id="sending" class="form-control" readonly></textarea>
+            </div>
+            <div class="col">
+                <textarea id="sent" class="form-control" readonly></textarea>
+            </div>
+        </div>
+        
+        <!-- CSV Upload and Warm-up Mode -->
+        <input type="file" id="fileInput" accept=".csv" class="form-control mt-2">
+        <div class="form-check mt-2">
+            <input type="checkbox" class="form-check-input" id="warmup">
+            <label class="form-check-label" for="warmup">Warm-up Mode</label>
+        </div>
+        
+        <!-- Message Template Input -->
+        <div class="mt-2">
+            <label for="messageTemplate" class="form-label">Message Template:</label>
+            <input type="text" id="messageTemplate" class="form-control" placeholder="Enter message (use {name} for recipient's name)" required>
+        </div>
+
+        <!-- Interval Settings -->
+        <div class="row mt-2">
+            <div class="col">
+                <label for="minInterval" class="form-label">Min Interval:</label>
+                <input type="number" id="minInterval" class="form-control" placeholder="Min Interval" required>
+            </div>
+            <div class="col">
+                <label for="maxInterval" class="form-label">Max Interval:</label>
+                <input type="number" id="maxInterval" class="form-control" placeholder="Max Interval" required>
+            </div>
+            <div class="col">
+                <label for="intervalUnit" class="form-label">Interval Unit:</label>
+                <select id="intervalUnit" class="form-control">
+                    <option value="seconds">Seconds</option>
+                    <option value="minutes">Minutes</option>
+                </select>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <button id="load" class="btn btn-primary mt-2">Load</button>
+        <button id="start" class="btn btn-success mt-2">Start</button>
+        <button id="stop" class="btn btn-danger mt-2" disabled>Stop</button>
+        
+        <!-- Status Display -->
+        <div id="status" class="mt-2">Stopped</div>
+        <div id="nextMessage" class="mt-2">Next message at: N/A</div>
+    </div>
+
+    <script src="p.js"></script>
+</body>
+</html>
