@@ -13,7 +13,6 @@
             font-family: Arial, sans-serif;
         }
         textarea {
-            height: 150px;
             resize: none;
         }
         #status {
@@ -25,7 +24,7 @@
     </style>
 </head>
 <body>
-    <h1>Messenger</h1>
+    <h1>Auto Web Whatsapp</h1>
     <div class="container">
         <!-- Labels Row -->
         <div class="row mb-2">
@@ -40,15 +39,24 @@
         <!-- Textareas Row -->
         <div class="row mb-2">
             <div class="col">
-                <textarea id="sending" class="form-control" readonly></textarea>
+                <textarea rows="3" id="sending" class="form-control" readonly></textarea>
             </div>
             <div class="col">
-                <textarea id="sent" class="form-control" readonly></textarea>
+                <textarea rows="3" id="sent" class="form-control" readonly></textarea>
             </div>
         </div>
         
-        <!-- CSV Upload and Warm-up Mode -->
-        <input type="file" id="fileInput" accept=".csv" class="form-control mt-2">
+        <!-- CSV Upload and Load Button -->
+        <div class="row mt-2">
+            <div class="col">
+                <div class="input-group">
+                    <input type="file" id="fileInput" accept=".csv" class="form-control">
+                    <button id="load" class="btn btn-primary">Load</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Warm-up Mode -->
         <div class="form-check mt-2">
             <input type="checkbox" class="form-check-input" id="warmup">
             <label class="form-check-label" for="warmup">Warm-up Mode</label>
@@ -57,7 +65,7 @@
         <!-- Message Template Input -->
         <div class="mt-2">
             <label for="messageTemplate" class="form-label">Message Template:</label>
-            <input type="text" id="messageTemplate" class="form-control" placeholder="Enter message (use {name} for recipient's name)" required>
+            <textarea id="messageTemplate" class="form-control" placeholder="Enter messages (use {name} for recipient's name, one per line for many)" rows="4"></textarea>
         </div>
 
         <!-- Interval Settings -->
@@ -80,7 +88,11 @@
         </div>
         
         <!-- Action Buttons -->
-        <button id="load" class="btn btn-primary mt-2">Load</button>
+        <div class="mt-2">
+            <label for="breakDuration" class="form-label">Break Duration (in minutes - min 5 & max 60):</label>
+            <input type="number" id="breakDuration" class="form-control" placeholder="Break Duration" disabled required>
+        </div>        
+        <button id="break" class="btn btn-secondary mt-2" disabled>Break</button>
         <button id="start" class="btn btn-success mt-2">Start</button>
         <button id="stop" class="btn btn-danger mt-2" disabled>Stop</button>
         
@@ -89,6 +101,6 @@
         <div id="nextMessage" class="mt-2">Next message at: N/A</div>
     </div>
 
-    <script src="p.js"></script>
+    <script src="popup.js"></script>
 </body>
 </html>
